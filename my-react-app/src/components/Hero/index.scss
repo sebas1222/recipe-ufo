@@ -1,0 +1,82 @@
+.hero--main--container {
+  padding: 90px 50px;
+  .hero--carrousel--container {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+  }
+  .hero--carrousel--swiper {
+    .hero--carrousel--item--image {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .hero--layout--container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    max-width: 600px;
+    h1 {
+      font-size: 50px;
+      font-weight: 900;
+    }
+    p {
+      line-height: 30px;
+    }
+  }
+  .swiper {
+    width: 240px;
+    height: 320px;
+  }
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  &:nth-child(1n) {
+    background-color: rgb(206, 17, 17);
+  }
+
+  &:nth-child(2n) {
+    background-color: rgb(0, 140, 255);
+  }
+
+  &:nth-child(3n) {
+    background-color: rgb(10, 184, 111);
+  }
+
+  &:nth-child(4n) {
+    background-color: rgb(211, 122, 7);
+  }
+
+  &:nth-child(5n) {
+    background-color: rgb(118, 163, 12);
+  }
+
+  &:nth-child(6n) {
+    background-color: rgb(180, 10, 47);
+  }
+
+  &:nth-child(7n) {
+    background-color: rgb(35, 99, 19);
+  }
+
+  &:nth-child(8n) {
+    background-color: rgb(0, 68, 255);
+  }
+
+  &:nth-child(9n) {
+    background-color: rgb(218, 12, 218);
+  }
+
+  &:nth-child(10n) {
+    background-color: rgb(54, 94, 77);
+  }
+}

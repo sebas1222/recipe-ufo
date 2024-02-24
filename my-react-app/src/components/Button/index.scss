@@ -1,0 +1,99 @@
+@use "../../theme" as *;
+
+@mixin btnProps($btnBgColor, $btnTextColor, $btnBorderColor) {
+  background-color: $btnBgColor;
+  border-color: $btnBorderColor;
+  .button_text_container {
+    color: $btnTextColor;
+    .text--container {
+      .loading--pulse {
+        background-color: $btnTextColor;
+      }
+    }
+  }
+  .button_icon_container {
+    svg {
+      color: $btnTextColor;
+    }
+  }
+}
+.button_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: all 0.4s;
+  border: 1px solid transparent;
+  position: relative;
+  gap: 10px;
+  cursor: pointer;
+  .button_text_container {
+    .text--container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        font-weight: 500;
+        font-size: 14px;
+      }
+      &.loading {
+        span {
+          opacity: 0;
+        }
+        .loading--pulse {
+          width: 20%;
+          position: absolute;
+          height: 3px;
+          animation: transport 1s infinite;
+        }
+      }
+    }
+  }
+  .button_icon_container {
+    display: flex;
+    align-items: center;
+  }
+  &.btn-primary {
+    @include btnProps($primary--color, $tertiary--color, $primary--color);
+    &:hover {
+      filter: opacity(85%);
+    }
+  }
+  &.btn-secondary {
+    @include btnProps($secondary--color, $primary--color, $primary--color);
+    &:hover {
+      filter: brightness(85%);
+    }
+  }
+  &.disabled {
+    filter: opacity(85%);
+    pointer-events: none;
+  }
+  &:has(.loading--pulse) {
+    animation: pulse 1s forwards;
+    pointer-events: none;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    filter: opacity(90%);
+  }
+  50% {
+    filter: opacity(95%);
+  }
+  100% {
+    filter: opacity(90%);
+  }
+}
+@keyframes transport {
+  0% {
+    width: 20%;
+  }
+  50% {
+    width: 30%;
+  }
+  100% {
+    width: 20%;
+  }
+}

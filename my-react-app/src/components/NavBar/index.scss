@@ -1,0 +1,44 @@
+@use "../../theme.scss" as *;
+
+.navbar--main--container {
+  width: 100%;
+  background-color: $secondary--color;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  .navbar--content--container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo--image--container {
+      color: $tertiary--color;
+    }
+    ul {
+      display: flex;
+      gap: 50px;
+      li {
+        position: relative;
+        display: flex;
+        padding: 10px;
+        cursor: pointer;
+        a {
+          color: $quartery--color;
+        }
+        &::after {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          transition: all 0.2s linear;
+          content: "";
+          width: 0;
+          height: 3px;
+          background-color: $primary--color;
+        }
+        &:hover,
+        &.active {
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
