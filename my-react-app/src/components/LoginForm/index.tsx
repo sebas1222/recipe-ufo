@@ -15,7 +15,7 @@ interface LoginFormProps {
 const LoginForm = ({ onLogin }: LoginFormProps) => {
   const handleSubmitLogin = async (values: LoginFormTypes) => {
     console.log(values);
-    AccountUserService.loginAccount(values)
+    await AccountUserService.loginAccount(values)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .then((response: any) => {
         toast.success(JSON.stringify(response));

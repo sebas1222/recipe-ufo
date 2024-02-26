@@ -15,7 +15,7 @@ interface RegisterFormProps {
 const RegisterForm = ({ onRegister }: RegisterFormProps) => {
   const handleSubmitRegister = async (values: RegisterFormTypes) => {
     console.log({ values });
-    AccountUserService.registerAccount(values)
+   await AccountUserService.registerAccount(values)
       .then((response) => toast.success(JSON.stringify(response)))
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .catch((error: any) => toast.error(error));
