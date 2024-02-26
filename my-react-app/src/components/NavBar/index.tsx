@@ -5,19 +5,22 @@ import { useState } from "react";
 import "./index.scss";
 import Modal from "../Modal";
 import AuthModal from "../AuthModal";
+import { useUserTokenState } from "../../store/userToken";
 
 const NavBar = () => {
   const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
-  const userId = localStorage.getItem("token");
+  const token = useUserTokenState((state) => state.userToken);
+  const setToken = useUserTokenState((state) => state.setToken);
   const location = useLocation();
   const scrollY = useScrollY();
   const handleAuth = () => {
-    if (!userId) {
+    if (token?.length === 0) {
       () => setShowAuthModal(true);
     } else {
-      localStorage.removeItem("token");
+      setToken("");
     }
   };
+
   return (
     <>
       <nav
@@ -45,7 +48,7 @@ const NavBar = () => {
           <div>
             <Button
               onClick={handleAuth}
-              text={userId ? "Cerrar sesión" : "Iniciar sesión"}
+              text={token?.length > 0 ? "Cerrar sesión" : "Iniciar sesión"}
               styles={{ padding: "12px 30px" }}
               borderRadius={10}
             />

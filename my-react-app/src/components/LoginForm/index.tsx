@@ -7,19 +7,21 @@ import { loginFormSchema } from "../../schemas";
 import "./index.scss";
 import AccountUserService from "../../api/account";
 import { toast } from "react-toastify";
+import { useUserTokenState } from "../../store/userToken";
 
 interface LoginFormProps {
   onLogin: () => void;
 }
 
 const LoginForm = ({ onLogin }: LoginFormProps) => {
+  const setToken = useUserTokenState((state) => state.setToken);
   const handleSubmitLogin = async (values: LoginFormTypes) => {
     console.log(values);
     await AccountUserService.loginAccount(values)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .then((response: any) => {
         toast.success(`Bienvenido ${response.nombreUsuario}`);
-        localStorage.setItem("token", response.usuarioId);
+        setToken(response.usuarioId);
       })
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .catch((error: any) => toast.error(error));
