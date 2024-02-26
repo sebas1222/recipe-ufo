@@ -2,17 +2,23 @@ import { Formik } from "formik";
 import { registerFormSchema } from "../../schemas";
 import { initialValuesRegisterForm } from "../../interfaces/initials";
 import InputForm from "../InputForm";
+import { toast } from "react-toastify";
 import Button from "../Button";
 import { RegisterFormTypes } from "../../interfaces/index.t";
 import "./index.scss";
+import AccountUserService from "../../api/account";
 
 interface RegisterFormProps {
   onRegister: () => void;
 }
 
 const RegisterForm = ({ onRegister }: RegisterFormProps) => {
-  const handleSubmitRegister = (values: RegisterFormTypes) => {
+  const handleSubmitRegister = async (values: RegisterFormTypes) => {
     console.log({ values });
+    AccountUserService.registerAccount(values)
+      .then((response) => toast.success(JSON.stringify(response)))
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .catch((error: any) => toast.error(error));
     onRegister();
   };
 

@@ -5,14 +5,24 @@ import Button from "../Button";
 import { initialValuesLoginForm } from "../../interfaces/initials";
 import { loginFormSchema } from "../../schemas";
 import "./index.scss";
+import AccountUserService from "../../api/account";
+import { toast } from "react-toastify";
 
 interface LoginFormProps {
   onLogin: () => void;
 }
 
 const LoginForm = ({ onLogin }: LoginFormProps) => {
-  const handleSubmitLogin = (values: LoginFormTypes) => {
+  const handleSubmitLogin = async (values: LoginFormTypes) => {
     console.log(values);
+    AccountUserService.loginAccount(values)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .then((response: any) => {
+        toast.success(JSON.stringify(response));
+        localStorage.setItem("token", response.usuarioId);
+      })
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .catch((error: any) => toast.error(error));
     onLogin();
   };
 
