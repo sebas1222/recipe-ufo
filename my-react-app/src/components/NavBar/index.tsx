@@ -15,7 +15,7 @@ const NavBar = () => {
   const scrollY = useScrollY();
   const handleAuth = () => {
     if (token?.length === 0) {
-      () => setShowAuthModal(true);
+      setShowAuthModal(true);
     } else {
       setToken("");
     }
