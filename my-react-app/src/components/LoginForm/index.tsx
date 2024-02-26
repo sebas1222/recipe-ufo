@@ -21,7 +21,7 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .then((response: any) => {
         toast.success(`Bienvenido ${response.nombreUsuario}`);
-        setToken(response.usuarioId);
+        setToken(String(response.usuarioId));
       })
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .catch((error: any) => toast.error(error));
