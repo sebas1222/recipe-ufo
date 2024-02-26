@@ -1,6 +1,6 @@
 import React from "react";
-import "./index.scss";
 import NavBar from "../NavBar";
+import "./index.scss";
 
 interface MainContainerProps {
   children?: React.ReactNode;
@@ -8,9 +8,9 @@ interface MainContainerProps {
 
 const MainContainer = ({ children }: MainContainerProps) => {
   return (
-    <div>
+    <div className="main--container">
       <NavBar />
-      {children}
+      <div className="main--content--container">{children}</div>
     </div>
   );
 };

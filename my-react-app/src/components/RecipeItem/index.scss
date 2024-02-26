@@ -1,0 +1,52 @@
+@use "../../theme" as *;
+
+.recipe--item--main--container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .recipe--item--mask--container {
+    position: absolute;
+    display: flex;
+    background-color: rgba(0, 98, 128, 0.8);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    flex-direction: column;
+    transition: all 0.3s linear;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .recipe--item--layout--container {
+      display: flex;
+      z-index: 1;
+      flex-direction: column;
+      gap: 10px;
+      strong {
+        color: white;
+      }
+    }
+    p {
+      color: white;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      margin-bottom: 10px;
+      margin-left: 10px;
+    }
+  }
+  &:hover {
+    .recipe--item--mask--container {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

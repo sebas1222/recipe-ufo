@@ -1,0 +1,57 @@
+@use "../../theme.scss" as *;
+
+.input--form--container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.3s;
+  .input--form--error {
+    color: $text-danger;
+    font-size: 12px;
+  }
+  .input--form--item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid grey;
+    padding: 12px 15px;
+    transition: all 0.2s;
+    height: 52px;
+    border-radius: 7px;
+    .input--form--placeholder {
+      transition: all 0.3s;
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      &.dirty {
+        max-height: 12px;
+        margin-bottom: 5px;
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+    span {
+      color: grey;
+      font-size: 12px;
+    }
+    .input--form--icon {
+      color: #313131;
+      font-size: 18px;
+    }
+    &:has(input:focus) {
+      border-color: $primary--color;
+      box-shadow: inset 0 0 0 1px black;
+      .input--form--icon {
+        color: $primary--color;
+      }
+    }
+    &.error {
+      border-color: $text-danger;
+      box-shadow: inset 0 0 0 1px $text-danger;
+      &:has(input:focus) {
+        border-color: $text-danger;
+        box-shadow: inset 0 0 0 1px $text-danger;
+      }
+    }
+  }
+}

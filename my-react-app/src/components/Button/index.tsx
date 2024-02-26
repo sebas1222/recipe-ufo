@@ -6,7 +6,7 @@ interface ButtonProps {
   iconSize?: number;
   disabled?: boolean;
   styles?: React.CSSProperties;
-  btnClass?: "btn-primary" | "btn-secondary";
+  btnClass?: "btn-primary" | "btn-secondary" | "btn-primary-inner";
   borderRadius?: number;
   onClick?(): void;
   loading?: boolean;

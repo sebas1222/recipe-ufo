@@ -2,6 +2,7 @@
   padding: 90px 50px;
   .hero--carrousel--container {
     display: grid;
+    gap: 40px;
     grid-template-columns: 2fr 3fr;
   }
   .hero--carrousel--swiper {

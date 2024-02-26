@@ -1,0 +1,23 @@
+@use "../../theme.scss" as *;
+
+.login--form--main--container {
+  .login--form--header--container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .login--form--error--message {
+      color: $text-danger;
+      text-align: center;
+      font-size: 14px;
+    }
+    strong {
+      font-size: 40px;
+    }
+    margin-bottom: 30px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

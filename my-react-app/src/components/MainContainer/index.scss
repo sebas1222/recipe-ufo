@@ -1,0 +1,7 @@
+.main--container {
+  &:has(.navbar--main--container.sticky) {
+    .main--content--container {
+      margin-top: 85px;
+    }
+  }
+}

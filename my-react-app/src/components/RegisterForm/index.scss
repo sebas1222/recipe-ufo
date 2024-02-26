@@ -1,0 +1,13 @@
+.register--form--main--container {
+  .register--form--header--container {
+    strong {
+      font-size: 40px;
+    }
+    margin-bottom: 40px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

@@ -2,14 +2,15 @@
 
 .navbar--main--container {
   width: 100%;
-  background-color: $secondary--color;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  background-color: $fifth--color;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  height: 85px;
   .navbar--content--container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     .logo--image--container {
-      color: $tertiary--color;
+      color: $primary--color;
     }
     ul {
       display: flex;
@@ -20,7 +21,7 @@
         padding: 10px;
         cursor: pointer;
         a {
-          color: $quartery--color;
+          color: $secondary--color;
         }
         &::after {
           position: absolute;
@@ -40,5 +41,34 @@
         }
       }
     }
+  }
+  &.sticky {
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    opacity: 1;
+    position: fixed;
+    animation: appeareance linear 0.5s;
+    z-index: 13;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+}
+
+@keyframes appeareance {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
   }
 }

@@ -65,6 +65,9 @@
       filter: brightness(85%);
     }
   }
+  &.btn-primary-inner {
+    @include btnProps($tertiary--color, $primary--color, $tertiary--color);
+  }
   &.disabled {
     filter: opacity(85%);
     pointer-events: none;
