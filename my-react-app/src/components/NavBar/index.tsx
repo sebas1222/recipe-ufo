@@ -39,7 +39,7 @@ const NavBar = () => {
               <Link to="/">Inicio</Link>
             </li>
             <li className={location.pathname === "/recipes" ? "active" : ""}>
-              <Link to="/">Recetas</Link>
+              <Link to="/recipes">Recetas</Link>
             </li>
             <li>
               <Link to="/">Crear</Link>

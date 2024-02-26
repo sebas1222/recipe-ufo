@@ -9,3 +9,8 @@ export interface RegisterFormTypes {
   apellido: string;
   nombreUsuario: string;
 }
+export interface RecipeAddFormTypes {
+  nombreReceta: string;
+  instruccionesPreparación: string;
+  usuarioId: number;
+}
