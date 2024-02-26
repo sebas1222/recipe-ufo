@@ -8,9 +8,16 @@ import AuthModal from "../AuthModal";
 
 const NavBar = () => {
   const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
+  const userId = localStorage.getItem("token");
   const location = useLocation();
   const scrollY = useScrollY();
-
+  const handleAuth = () => {
+    if (!userId) {
+      () => setShowAuthModal(true);
+    } else {
+      localStorage.removeItem("token");
+    }
+  };
   return (
     <>
       <nav
@@ -37,8 +44,8 @@ const NavBar = () => {
           </ul>
           <div>
             <Button
-              onClick={() => setShowAuthModal(true)}
-              text="Iniciar sesión"
+              onClick={handleAuth}
+              text={userId ? "Cerrar sesión" : "Iniciar sesión"}
               styles={{ padding: "12px 30px" }}
               borderRadius={10}
             />
