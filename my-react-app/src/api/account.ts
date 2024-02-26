@@ -1,5 +1,6 @@
 import Api from ".";
 import { LoginFormTypes, RegisterFormTypes } from "../interfaces/index.t";
+
 const BASE_URL = "https://localhost:7083/api/Usuarios";
 
 export default class AccountUserService {
@@ -14,7 +15,7 @@ export default class AccountUserService {
   }
   static async loginAccount(data: LoginFormTypes) {
     try {
-      const rsp = await Api.post(`${BASE_URL}/Login}`, data);
+      const rsp = await Api.post(`${BASE_URL}/Login`, data);
       const rspJson = rsp.json();
       return rspJson;
     } catch (error) {

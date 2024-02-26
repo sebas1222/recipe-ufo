@@ -18,7 +18,7 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
     await AccountUserService.loginAccount(values)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .then((response: any) => {
-        toast.success(JSON.stringify(response));
+        toast.success(`Bienvenido ${response.nombreUsuario}`);
         localStorage.setItem("token", response.usuarioId);
       })
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

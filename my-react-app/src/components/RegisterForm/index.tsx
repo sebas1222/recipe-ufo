@@ -15,8 +15,10 @@ interface RegisterFormProps {
 const RegisterForm = ({ onRegister }: RegisterFormProps) => {
   const handleSubmitRegister = async (values: RegisterFormTypes) => {
     console.log({ values });
-   await AccountUserService.registerAccount(values)
-      .then((response) => toast.success(JSON.stringify(response)))
+    await AccountUserService.registerAccount(values)
+      .then((response) =>
+        toast.success(`Registro exitoso de ${response.nombreUsuario} `)
+      )
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .catch((error: any) => toast.error(error));
     onRegister();
