@@ -17,9 +17,12 @@ const RecipeForm = () => {
     console.log(form);
     if (form.url) {
       const url = await uploadImageCloudinary(form.url);
-      await AccountRecipeService.createRecipe(
-        recipeFormToDB({ ...form, url, usuarioId: Number(userId) })
-      );
+      const dataToSend = recipeFormToDB({
+        ...form,
+        url,
+        usuarioId: Number(userId),
+      });
+      await AccountRecipeService.createRecipe(dataToSend);
     }
   };
   const handleChangeForm = (

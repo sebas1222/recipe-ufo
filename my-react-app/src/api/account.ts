@@ -24,7 +24,7 @@ export default class AccountUserService {
   }
   static async registerAccount(data: RegisterFormTypes) {
     try {
-      const rsp = await Api.post(`${BASE_URL}}`, data);
+      const rsp = await Api.post(`${BASE_URL}`, data);
       const rspJson = rsp.json();
       return rspJson;
     } catch (error) {
