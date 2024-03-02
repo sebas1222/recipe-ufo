@@ -26,6 +26,7 @@ export const recipeFormToDB = (recipeValues: {
   instruccionesPreparacion: RecipeStepTypes[];
   nombreReceta: string;
   url: string;
+  usuarioId: number;
 }): RecipeToDB => {
   const steps = recipeValues.instruccionesPreparacion.map(
     (step) => step.description
@@ -34,5 +35,6 @@ export const recipeFormToDB = (recipeValues: {
     instruccionesPreparacion: steps.join("-"),
     nombreReceta: recipeValues.nombreReceta,
     url: recipeValues.url,
+    usuarioId: recipeValues.usuarioId,
   };
 };

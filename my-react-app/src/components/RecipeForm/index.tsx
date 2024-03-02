@@ -8,14 +8,18 @@ import Button from "../Button";
 import { recipeFormToDB, uploadImageCloudinary } from "../../helpers";
 import "./index.scss";
 import AccountRecipeService from "../../api/recipes";
+import { useUserTokenState } from "../../store/userToken";
 
 const RecipeForm = () => {
   const [form, setForm] = useState<RecipeAddFormTypes>(initialValuesRecipeForm);
+  const userId = useUserTokenState((state) => state.userToken);
   const handleSubmitRecipe = async () => {
     console.log(form);
     if (form.url) {
       const url = await uploadImageCloudinary(form.url);
-      await AccountRecipeService.createRecipe(recipeFormToDB({ ...form, url }));
+      await AccountRecipeService.createRecipe(
+        recipeFormToDB({ ...form, url, usuarioId: Number(userId) })
+      );
     }
   };
   const handleChangeForm = (

@@ -24,4 +24,5 @@ export interface RecipeToDB {
   nombreReceta: string;
   instruccionesPreparacion: string;
   url: string;
+  usuarioId: number;
 }
