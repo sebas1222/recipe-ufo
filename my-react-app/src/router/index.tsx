@@ -3,6 +3,7 @@ import HomePage from "../pages/Home";
 import { APP_ROUTER_CONFIG } from "./config";
 import RecipesPage from "../pages/Recipes";
 import CreatePage from "../pages/Create";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,6 @@ export const router = createBrowserRouter([
   },
   {
     path: APP_ROUTER_CONFIG["create"].path,
-    element: <CreatePage />,
+    element: <ProtectedRoute component={<CreatePage />} />,
   },
 ]);
