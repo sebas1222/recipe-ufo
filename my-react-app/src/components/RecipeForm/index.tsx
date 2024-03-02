@@ -7,6 +7,7 @@ import Input from "../Input";
 import Button from "../Button";
 import { recipeFormToDB, uploadImageCloudinary } from "../../helpers";
 import "./index.scss";
+import AccountRecipeService from "../../api/recipes";
 
 const RecipeForm = () => {
   const [form, setForm] = useState<RecipeAddFormTypes>(initialValuesRecipeForm);
@@ -14,7 +15,7 @@ const RecipeForm = () => {
     console.log(form);
     if (form.url) {
       const url = await uploadImageCloudinary(form.url);
-      console.log(recipeFormToDB({ ...form, url }));
+      await AccountRecipeService.createRecipe(recipeFormToDB({ ...form, url }));
     }
   };
   const handleChangeForm = (
