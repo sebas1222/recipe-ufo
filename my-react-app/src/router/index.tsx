@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../pages/Home";
 import { APP_ROUTER_CONFIG } from "./config";
 import RecipesPage from "../pages/Recipes";
+import CreatePage from "../pages/Create";
 
 export const router = createBrowserRouter([
   {
@@ -11,5 +12,9 @@ export const router = createBrowserRouter([
   {
     path: APP_ROUTER_CONFIG["recipes"].path,
     element: <RecipesPage />,
+  },
+  {
+    path: APP_ROUTER_CONFIG["create"].path,
+    element: <CreatePage />,
   },
 ]);

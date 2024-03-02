@@ -1,0 +1,7 @@
+@use "../../theme.scss" as *;
+.create--recipe--content--container {
+  strong {
+    color: $primary--color;
+    font-size: 40px;
+  }
+}

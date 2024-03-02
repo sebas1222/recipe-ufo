@@ -15,4 +15,8 @@ export const APP_ROUTER_CONFIG: AppRouterTypes = {
     path: "/recipes",
     label: "Recetas",
   },
+  create: {
+    path: "/create",
+    label: "Crear Receta",
+  },
 };

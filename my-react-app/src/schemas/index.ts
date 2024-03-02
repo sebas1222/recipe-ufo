@@ -13,3 +13,9 @@ export const registerFormSchema = Yup.object().shape({
     .required("Porfavor digite una contraseña")
     .test("len", "Digite una contraseña válida", (val) => val.length <= 20),
 });
+
+export const recipeFormSchema = Yup.object().shape({
+  nombreReceta: Yup.string().required("Completar campo"),
+  url: Yup.string().required("Completar campo"),
+  instruccionesPreparacion: Yup.string().required("Completar campo"),
+});

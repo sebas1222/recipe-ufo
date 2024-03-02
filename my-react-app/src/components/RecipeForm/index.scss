@@ -1,0 +1,16 @@
+form {
+  display: grid;
+  margin-top: 20px;
+  gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  .recipe--form--primary--info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+.inputs--group {
+  display: flex;
+  gap: 20px;
+}

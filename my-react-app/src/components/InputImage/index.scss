@@ -1,0 +1,24 @@
+@use "../../theme" as *;
+
+.input--image--container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 20px;
+  .input--image--selected {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    height: 300px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    svg {
+      align-self: center;
+      font-size: 300px;
+      color: $primary--color;
+    }
+  }
+}
