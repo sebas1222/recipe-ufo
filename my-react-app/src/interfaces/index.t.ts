@@ -24,7 +24,11 @@ export interface RecipeStepTypes {
 export interface RecipeToDB {
   nombreReceta: string;
   instruccionesPreparacion: string;
-  ingredientes: IngredientInputTypes[];
+  ingredientes: {
+    ingredienteId: number;
+    cantidad: number;
+    unidadMedida: string;
+  }[];
   url: string;
   usuarioId: number;
 }

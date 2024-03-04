@@ -36,12 +36,17 @@ export const recipeFormToDB = (recipeValues: {
   const steps = recipeValues.instruccionesPreparacion.map(
     (step) => step.description
   );
+  const ingredients = recipeValues.ingredientes.map((ingredient) => ({
+    ingredienteId: ingredient.ingredienteId,
+    cantidad: ingredient.cantidad,
+    unidadMedida: ingredient.unidadMedida,
+  }));
 
   return {
     instruccionesPreparacion: steps.join("-"),
     nombreReceta: recipeValues.nombreReceta,
     url: recipeValues.url,
     usuarioId: recipeValues.usuarioId,
-    ingredientes: recipeValues.ingredientes,
+    ingredientes: ingredients,
   };
 };
