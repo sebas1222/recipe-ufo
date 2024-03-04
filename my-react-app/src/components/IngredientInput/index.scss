@@ -1,0 +1,12 @@
+.ingredient--input--container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  p {
+    border: 1px solid grey;
+    padding: 16px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+}

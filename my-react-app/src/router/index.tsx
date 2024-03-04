@@ -16,6 +16,7 @@ export const router = createBrowserRouter([
   },
   {
     path: APP_ROUTER_CONFIG["create"].path,
-    element: <ProtectedRoute component={<CreatePage />} />,
+    element: <CreatePage />,
+    // element: <ProtectedRoute component={<CreatePage />} />,
   },
 ]);

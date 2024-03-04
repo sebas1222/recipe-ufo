@@ -1,0 +1,30 @@
+.ingredients--input--list--container {
+  .ingredients--input--list--search {
+    display: flex;
+    flex-direction: column;
+
+    .ingredients--input--list--search--results--mask {
+      position: relative;
+      .ingredients--input--list--search--results {
+        width: 100%;
+        position: absolute;
+        min-height: 30px;
+        border: 1px solid grey;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        top: 0;
+        z-index: 10;
+        background-color: white;
+        p {
+          padding: 5px 10px;
+          transition: all 0.3s;
+          font-size: 14px;
+          cursor: pointer;
+          &:hover {
+            background-color: rgb(247, 247, 247);
+          }
+        }
+      }
+    }
+  }
+}

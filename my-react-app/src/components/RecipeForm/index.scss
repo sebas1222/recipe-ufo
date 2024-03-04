@@ -8,6 +8,18 @@ form {
     flex-direction: column;
     gap: 30px;
   }
+  .recipe--form--secondary--info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .ingredients--list--container {
+      max-height: 150px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: scroll;
+    }
+  }
 }
 
 .inputs--group {
