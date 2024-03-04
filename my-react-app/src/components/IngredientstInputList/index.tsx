@@ -17,7 +17,6 @@ const IngredientstInputList = ({ onSelect }: IngredientstInputListProps) => {
     queryFn: () => IngredientsService.getAllIngredients(),
   });
 
-  console.log({ ingredients });
   const handleSelectIngredient = (ingredient: IngredientData) => {
     onSelect(ingredient);
     setSearch("");

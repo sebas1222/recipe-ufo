@@ -22,4 +22,13 @@ export default class RecipeService {
       console.log(error);
     }
   }
+  static async getOneRecipe(id: number) {
+    try {
+      const rsp = await Api.get(`${BASE_URL_RECIPES}/${id}`);
+      const rspJson = await rsp.json();
+      return rspJson;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

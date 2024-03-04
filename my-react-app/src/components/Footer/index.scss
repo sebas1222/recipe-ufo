@@ -1,0 +1,99 @@
+@use "../../theme.scss" as *;
+
+.footer--main--container {
+  padding: 30px 0;
+  background-color: $primary--color;
+  color: white;
+  .footer--main--content--container {
+    color: #ffffffb3;
+    .footer--main--related--info {
+      display: grid;
+      grid-template-columns: 1.3fr 3fr;
+      gap: 50px;
+      font-size: 14px;
+      .footer--about--us--container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        p {
+          line-height: 22px;
+        }
+        strong {
+          font-size: 40px;
+          text-transform: uppercase;
+        }
+        .footer--social--links--container {
+          display: flex;
+          margin-top: 20px;
+          gap: 20px;
+          li {
+            a {
+              svg {
+                font-size: 20px;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+      .footer--paths--container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 20px 0;
+        .footer--subscribe--container {
+          width: 100%;
+          max-width: 600px;
+          grid-column: span 3;
+          margin-top: 10px;
+
+          strong {
+            text-transform: uppercase;
+            color: white;
+          }
+
+          .footer--subscribe--input {
+            display: flex;
+            margin-top: 20px;
+            width: 100%;
+            input {
+              padding: 10px;
+              width: inherit;
+              flex: 1;
+            }
+          }
+        }
+        .footer--paths--list {
+          .footer--section--item--container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 15px 0;
+            .footer--section--title {
+              text-transform: uppercase;
+              color: white;
+            }
+            ul {
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+              li {
+                a {
+                  color: #ffffffb3;
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .footer--copy--container {
+      margin-top: 40px;
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}

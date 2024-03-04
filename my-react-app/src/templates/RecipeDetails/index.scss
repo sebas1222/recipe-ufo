@@ -1,0 +1,97 @@
+@use "../../theme.scss" as *;
+.recipe--details--container {
+  .recipe--details--content--container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+    .recipe--details--image {
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      max-height: 700px;
+
+      img {
+        width: 100%;
+        border-radius: 5px;
+        height: 100%;
+        object-fit: cover;
+      }
+      a {
+        background-color: $primary--color;
+        padding: 10px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        svg {
+          font-size: 40px;
+        }
+      }
+    }
+    .recipe--details--layout {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .recipe--details--author {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        strong {
+          font-size: 40px;
+        }
+        span {
+          color: $primary--color;
+          font-weight: 500;
+        }
+      }
+      .recipe--details--ingredients {
+        background-color: rgb(240, 248, 248);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        strong {
+          font-size: 24px;
+        }
+        .recipe--details--measures {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          strong {
+            font-size: 16px;
+            color: rgb(145, 145, 145);
+          }
+        }
+        .recipe--details--ingredients--list {
+          li {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-bottom: 5px;
+
+            span {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .recipe--details--steps {
+        background-color: rgb(240, 248, 248);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        strong {
+          font-size: 24px;
+        }
+        .recipe--details--steps--list {
+          li {
+            margin-bottom: 5px;
+
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

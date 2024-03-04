@@ -1,26 +1,28 @@
+import { useNavigate } from "react-router-dom";
 import { RecipeData } from "../../interfaces/index.t";
 import Button from "../Button";
 import "./index.scss";
 
 interface RecipeItemProps {
-  dataRecipe: RecipeData;
+  dataRecipe?: RecipeData;
 }
 
 const RecipeItem = ({ dataRecipe }: RecipeItemProps) => {
-  const { nombreReceta, usuario, test } = dataRecipe;
+  const navigate = useNavigate();
   return (
     <div className="recipe--item--main--container">
       <img
         src={
-          test ||
+          dataRecipe?.test ||
           "https://veggienoob.com/wp-content/uploads/2019/09/lomo-saltdo-vegano-500x500.jpg"
         }
       ></img>
       <div className="recipe--item--mask--container">
         <div className="recipe--item--layout--container">
-          <strong>{nombreReceta || "Receta"}</strong>
+          <strong>{dataRecipe?.nombreReceta || "Receta"}</strong>
           <Button
             btnClass="btn-primary-inner"
+            onClick={() => navigate(`/recipes/${dataRecipe?.recetaId}`)}
             borderRadius={2}
             text="Ver más"
           />
@@ -28,8 +30,9 @@ const RecipeItem = ({ dataRecipe }: RecipeItemProps) => {
         <p>
           <b>Por: </b>
           <span>
-            {`${usuario.nombreUsuario} ${usuario.apellido}` ||
-              "Sebastian Céspedes"}
+            {dataRecipe
+              ? `${dataRecipe?.usuario.nombreUsuario} ${dataRecipe?.usuario.apellido}`
+              : "Sebastian Céspedes"}
           </span>
         </p>
       </div>

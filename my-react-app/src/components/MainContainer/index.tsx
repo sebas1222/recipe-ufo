@@ -1,6 +1,8 @@
 import React from "react";
 import NavBar from "../NavBar";
 import "./index.scss";
+import Footer from "../Footer";
+import ScrollToTop from "../../hooks/useScrollToTop";
 
 interface MainContainerProps {
   children?: React.ReactNode;
@@ -8,10 +10,13 @@ interface MainContainerProps {
 
 const MainContainer = ({ children }: MainContainerProps) => {
   return (
-    <div className="main--container">
-      <NavBar />
-      <div className="main--content--container">{children}</div>
-    </div>
+    <ScrollToTop>
+      <div className="main--container">
+        <NavBar />
+        <div className="main--content--container">{children}</div>
+        <Footer />
+      </div>
+    </ScrollToTop>
   );
 };
 

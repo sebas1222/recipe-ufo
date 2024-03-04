@@ -4,6 +4,7 @@ import { APP_ROUTER_CONFIG } from "./config";
 import RecipesPage from "../pages/Recipes";
 import CreatePage from "../pages/Create";
 import ProtectedRoute from "../components/ProtectedRoute";
+import RecipeDetailsPage from "../pages/RecipeDetails";
 
 export const router = createBrowserRouter([
   {
@@ -17,5 +18,9 @@ export const router = createBrowserRouter([
   {
     path: APP_ROUTER_CONFIG["create"].path,
     element: <ProtectedRoute component={<CreatePage />} />,
+  },
+  {
+    path: `${APP_ROUTER_CONFIG["recipes"].path}/:recipeId`,
+    element: <RecipeDetailsPage />,
   },
 ]);

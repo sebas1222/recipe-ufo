@@ -23,7 +23,7 @@ const RecipeForm = () => {
   const [form, setForm] = useState<RecipeAddFormTypes>(initialValuesRecipeForm);
   const queryClient = useQueryClient();
   const userId = useUserTokenState((state) => state.userToken);
-  const { mutate: createRecipe } = useMutation({
+  const { mutate: createRecipe, isLoading } = useMutation({
     mutationFn: (data: RecipeToDB) => RecipeService.createRecipe(data),
     onSuccess: () => {
       queryClient.invalidateQueries(["recipes"]),
@@ -116,6 +116,11 @@ const RecipeForm = () => {
           value={form.url}
           onChange={(image) => handleChangeForm("url", image)}
         />
+        <Button
+          text="Subir receta"
+          loading={isLoading}
+          onClick={handleSubmitRecipe}
+        />
       </div>
       <div className="recipe--form--secondary--info">
         <Input
@@ -151,7 +156,6 @@ const RecipeForm = () => {
           textAddBtn="Agregar paso +"
         />
       </div>
-      <Button text="Subir receta" onClick={handleSubmitRecipe} />
     </form>
   );
 };

@@ -24,6 +24,9 @@ const Input = ({
     if (regex) {
       if (regex.test(value)) {
         onChange(value);
+        console.log("pasa");
+      } else {
+        console.log("no pasa");
       }
     } else {
       onChange(value);

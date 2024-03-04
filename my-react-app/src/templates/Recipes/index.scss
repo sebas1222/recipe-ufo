@@ -28,6 +28,7 @@
     .recipes--template--recipes--list {
       display: flex;
       flex-direction: column;
+      min-height: 300px;
       gap: 20px;
       .recipes--template--recipes--list--search {
         display: flex;
@@ -45,7 +46,7 @@
       }
       .recipes--template--recipes--list--items {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 10px;
       }
       .alert--info--container {
