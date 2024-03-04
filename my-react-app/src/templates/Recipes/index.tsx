@@ -2,6 +2,7 @@ import { useState } from "react";
 import IngredientstInputList from "../../components/IngredientstInputList";
 import Input from "../../components/Input";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import { FaRegSadCry } from "react-icons/fa";
 import { MdOutlineSearchOff } from "react-icons/md";
 import {
   FiltersRecipe,
@@ -57,25 +58,31 @@ const RecipesTemplate = ({ data }: RecipeTemplateProps) => {
     <div className="recipes--template--main--container">
       <div className="recipes--template--content--container content--container">
         <div className="recipes--template--side--container">
-          <strong>Filtrar por recetas</strong>
+          <strong>Filtrar por ingrediente</strong>
           <IngredientstInputList
             onSelect={(value) => handleSelecIngredient(value)}
           />
-          {filters.ingredients.map((ingredient) => {
-            return (
-              <div
-                key={ingredient.ingredienteId}
-                className="filter--ingredient--item"
-              >
-                <p>{ingredient.nombreIngrediente}</p>
-                <IoMdCloseCircleOutline
-                  onClick={() =>
-                    handleDeleteIngredient(ingredient.ingredienteId)
-                  }
-                />
-              </div>
-            );
-          })}
+          {filters.ingredients && filters.ingredients.length > 0 ? (
+            filters.ingredients.map((ingredient) => {
+              return (
+                <div
+                  key={ingredient.ingredienteId}
+                  className="filter--ingredient--item"
+                >
+                  <p>{ingredient.nombreIngrediente}</p>
+                  <IoMdCloseCircleOutline
+                    onClick={() =>
+                      handleDeleteIngredient(ingredient.ingredienteId)
+                    }
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <p className="non--filters--ingredients">
+              Aún no se han seleccionado ingredientes <FaRegSadCry />
+            </p>
+          )}
         </div>
         <div className="recipes--template--recipes--list">
           <div className="recipes--template--recipes--list--search">
