@@ -1,6 +1,6 @@
 .ingredient--input--container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 0.2fr;
   align-items: center;
   gap: 20px;
   p {
@@ -8,5 +8,15 @@
     padding: 16px;
     font-size: 14px;
     border-radius: 8px;
+  }
+  .ingredient--delete--option {
+    background-color: rgb(211, 7, 7);
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    height: 100%;
+    color: white;
   }
 }

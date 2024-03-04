@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "../Button";
 import useScrollY from "../../hooks/useScrollY";
 import { useState } from "react";
@@ -11,6 +11,7 @@ const NavBar = () => {
   const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
   const token = useUserTokenState((state) => state.userToken);
   const setToken = useUserTokenState((state) => state.setToken);
+  const navigate = useNavigate();
   const location = useLocation();
   const scrollY = useScrollY();
   const handleAuth = () => {
@@ -31,7 +32,7 @@ const NavBar = () => {
         }
       >
         <div className="navbar--content--container content--container">
-          <div className="logo--image--container">
+          <div className="logo--image--container" onClick={() => navigate("/")}>
             <h2>PLATO VOLADOR</h2>
           </div>
           <ul>

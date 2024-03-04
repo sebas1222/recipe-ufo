@@ -79,6 +79,14 @@ const RecipeForm = () => {
       ),
     });
   };
+  const handleDeleteIngredient = (id: number) => {
+    setForm({
+      ...form,
+      ingredientes: form.ingredientes.filter(
+        (ingredient) => ingredient.ingredienteId !== id
+      ),
+    });
+  };
   console.log(form);
   return (
     <form>
@@ -107,6 +115,7 @@ const RecipeForm = () => {
                 onChangeUnity={(value, id) =>
                   handleChangeUnityIngredient(value, id)
                 }
+                onDelete={(id) => handleDeleteIngredient(id)}
                 key={ingredient.ingredienteId}
                 ingredientInfo={ingredient}
               />
