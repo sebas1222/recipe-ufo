@@ -1,31 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IngredientData } from "../../interfaces/index.t";
 import Input from "../Input";
 import "./index.scss";
+import IngredientsService from "../../api/ingredients";
 
 interface IngredientstInputListProps {
-  ingredientsData?: IngredientData[];
+  // ingredientsData?: IngredientData[];
   onSelect: (ingredient: IngredientData) => void;
 }
 
-const dataFake: IngredientData[] = [
-  { ingredienteId: 1, nombreIngrediente: "papa" },
-  { ingredienteId: 2, nombreIngrediente: "tomate" },
-  { ingredienteId: 3, nombreIngrediente: "paprika" },
-];
+// const dataFake: IngredientData[] = [
+//   { ingredienteId: 1, nombreIngrediente: "papa" },
+//   { ingredienteId: 2, nombreIngrediente: "tomate" },
+//   { ingredienteId: 3, nombreIngrediente: "paprika" },
+// ];
 
 const IngredientstInputList = ({
-  ingredientsData = dataFake,
+  // ingredientsData = dataFake,
   onSelect,
 }: IngredientstInputListProps) => {
   const [search, setSearch] = useState<string>("");
+  const [ingredients, setIngredients] = useState<IngredientData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchIngredients = async () => {
+      const data = await IngredientsService.getAllIngredients();
+      setIngredients(data);
+      setLoading(false);
+    };
+    fetchIngredients();
+  }, []);
 
   const handleSelectIngredient = (ingredient: IngredientData) => {
     onSelect(ingredient);
   };
-  const filterData = ingredientsData.filter((ingredient) =>
+  const filterData = ingredients.filter((ingredient) =>
     ingredient.nombreIngrediente.includes(search)
   );
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="ingredients--input--list--container">
