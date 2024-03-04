@@ -100,7 +100,7 @@ const RecipeForm = () => {
       ),
     });
   };
-
+  console.log({ form });
   return (
     <form>
       <div className="recipe--form--primary--info">
@@ -117,6 +117,12 @@ const RecipeForm = () => {
         />
       </div>
       <div className="recipe--form--secondary--info">
+        <Input
+          value={form.urlVideo}
+          type="text"
+          onChange={(value) => handleChangeForm("urlVideo", value)}
+          placeholder="Añade una url de tu video"
+        />
         <IngredientstInputList onSelect={handleAddIngredient} />
         <div className="ingredients--list--container">
           {form?.ingredientes.map((ingredient) => {

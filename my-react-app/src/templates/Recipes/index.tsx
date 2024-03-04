@@ -7,15 +7,10 @@ import { IngredientData } from "../../interfaces/index.t";
 import "./index.scss";
 const RecipesTemplate = () => {
   const [search, setSearch] = useState<string>("");
-  const [filtersIngredients, setFiltersIngredients] = useState<
-    IngredientData[]
-  >([]);
 
   const handleSelecIngredient = (ingredient: IngredientData) => {
     console.log(ingredient);
   };
-
-  const filterByIngredients = () => {};
 
   return (
     <div className="recipes--template--main--container">

@@ -21,4 +21,5 @@ export const initialValuesRecipeForm: RecipeAddFormTypes = {
   instruccionesPreparacion: [],
   ingredientes: [],
   url: null,
+  urlVideo: "",
 };

@@ -16,6 +16,7 @@ export default class RecipeService {
   static async createRecipe(data: RecipeToDB) {
     try {
       const rsp = await Api.post(`${BASE_URL_RECIPES}`, data);
+      console.log(rsp);
       return "okey";
     } catch (error) {
       console.log(error);

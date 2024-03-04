@@ -14,6 +14,7 @@ export interface RecipeAddFormTypes {
   instruccionesPreparacion: RecipeStepTypes[];
   ingredientes: IngredientInputTypes[];
   url: Blob | null;
+  urlVideo: string;
 }
 
 export interface RecipeStepTypes {
@@ -29,7 +30,8 @@ export interface RecipeToDB {
     cantidad: number;
     unidadMedida: string;
   }[];
-  url: string;
+  test: string;
+  test2: string;
   usuarioId: number;
 }
 
