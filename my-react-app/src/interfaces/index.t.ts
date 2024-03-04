@@ -12,7 +12,7 @@ export interface RegisterFormTypes {
 export interface RecipeAddFormTypes {
   nombreReceta: string;
   instruccionesPreparacion: RecipeStepTypes[];
-  ingredientesPreparacion: IngredientInputTypes[];
+  ingredientes: IngredientInputTypes[];
   url: Blob | null;
 }
 
@@ -24,6 +24,7 @@ export interface RecipeStepTypes {
 export interface RecipeToDB {
   nombreReceta: string;
   instruccionesPreparacion: string;
+  ingredientes: IngredientInputTypes[];
   url: string;
   usuarioId: number;
 }

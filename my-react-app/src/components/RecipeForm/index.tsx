@@ -28,6 +28,7 @@ const RecipeForm = () => {
         url,
         usuarioId: Number(userId),
       });
+      console.log({ dataToSend });
       await AccountRecipeService.createRecipe(dataToSend);
     }
   };
@@ -39,15 +40,15 @@ const RecipeForm = () => {
   };
   const handleAddIngredient = (ingredientToAdd: IngredientData) => {
     if (
-      !form.ingredientesPreparacion.some(
+      !form.ingredientes.some(
         (ingredient) =>
           ingredient.ingredienteId === ingredientToAdd.ingredienteId
       )
     ) {
       setForm({
         ...form,
-        ingredientesPreparacion: [
-          ...form.ingredientesPreparacion,
+        ingredientes: [
+          ...form.ingredientes,
           {
             ...ingredientToAdd,
             cantidad: 1,
@@ -61,7 +62,7 @@ const RecipeForm = () => {
   const handleChangeMeasureIngredient = (value: number, id: number) => {
     setForm({
       ...form,
-      ingredientesPreparacion: form.ingredientesPreparacion.map((ingredient) =>
+      ingredientes: form.ingredientes.map((ingredient) =>
         ingredient.ingredienteId === id
           ? { ...ingredient, cantidad: value }
           : ingredient
@@ -71,7 +72,7 @@ const RecipeForm = () => {
   const handleChangeUnityIngredient = (value: string, id: number) => {
     setForm({
       ...form,
-      ingredientesPreparacion: form.ingredientesPreparacion.map((ingredient) =>
+      ingredientes: form.ingredientes.map((ingredient) =>
         ingredient.ingredienteId === id
           ? { ...ingredient, unidadMedida: value }
           : ingredient
@@ -97,7 +98,7 @@ const RecipeForm = () => {
       <div className="recipe--form--secondary--info">
         <IngredientstInputList onSelect={handleAddIngredient} />
         <div className="ingredients--list--container">
-          {form.ingredientesPreparacion.map((ingredient) => {
+          {form.ingredientes.map((ingredient) => {
             return (
               <IngredientInput
                 onChangeMeasure={(value, id) =>

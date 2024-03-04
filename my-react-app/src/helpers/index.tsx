@@ -1,4 +1,8 @@
-import { RecipeStepTypes, RecipeToDB } from "../interfaces/index.t";
+import {
+  IngredientInputTypes,
+  RecipeStepTypes,
+  RecipeToDB,
+} from "../interfaces/index.t";
 
 const CLOUDINARY_CLOUD_NAME = "dco8fbxso";
 const CLOUDINARY_UPLOAD_PRESET = "ml_default";
@@ -27,6 +31,7 @@ export const recipeFormToDB = (recipeValues: {
   nombreReceta: string;
   url: string;
   usuarioId: number;
+  ingredientes: IngredientInputTypes[];
 }): RecipeToDB => {
   const steps = recipeValues.instruccionesPreparacion.map(
     (step) => step.description
@@ -36,5 +41,6 @@ export const recipeFormToDB = (recipeValues: {
     nombreReceta: recipeValues.nombreReceta,
     url: recipeValues.url,
     usuarioId: recipeValues.usuarioId,
+    ingredientes: recipeValues.ingredientes,
   };
 };

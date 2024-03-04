@@ -19,6 +19,6 @@ export const initialValuesRegisterForm: RegisterFormTypes = {
 export const initialValuesRecipeForm: RecipeAddFormTypes = {
   nombreReceta: "",
   instruccionesPreparacion: [],
-  ingredientesPreparacion: [],
+  ingredientes: [],
   url: null,
 };
