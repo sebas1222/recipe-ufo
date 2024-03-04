@@ -24,6 +24,14 @@ const NavBar = () => {
     }
   };
 
+  const handleGoToCreate = () => {
+    if (token.length === 0) {
+      toast.info("Se necesita iniciar sesión para proceder");
+    } else {
+      navigate("/create");
+    }
+  };
+
   return (
     <>
       <nav
@@ -50,7 +58,7 @@ const NavBar = () => {
             >
               <span>Recetas</span>
             </li>
-            <li onClick={() => navigate("/create")}>
+            <li onClick={handleGoToCreate}>
               <span>Crear</span>
             </li>
           </ul>

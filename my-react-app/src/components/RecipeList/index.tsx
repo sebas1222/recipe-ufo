@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Button from "../Button";
 import "./index.scss";
 import { RecipeData } from "../../interfaces/index.t";
+import { useNavigate } from "react-router-dom";
 
 interface RecipeListProps {
   data: RecipeData[];
@@ -11,7 +12,7 @@ interface RecipeListProps {
 }
 const RecipeList = ({ title, data }: RecipeListProps) => {
   const carrouselRef = useRef() as React.MutableRefObject<HTMLDivElement>;
-
+  const navigate = useNavigate();
   const scrollLeft = () => {
     if (carrouselRef.current) {
       carrouselRef.current.scrollLeft -= 340;
@@ -26,7 +27,7 @@ const RecipeList = ({ title, data }: RecipeListProps) => {
   return (
     <div className="recipe--list--main--container">
       <div className="recipe--list--content--container content--container">
-        <strong className="recipe--list--title" >{title}</strong>
+        <strong className="recipe--list--title">{title}</strong>
         <div className="recipe--list--carrousel--container">
           <div
             onClick={scrollLeft}
@@ -52,6 +53,7 @@ const RecipeList = ({ title, data }: RecipeListProps) => {
               <Button
                 text="Explorar más recetas"
                 textSize="35px"
+                onClick={() => navigate("/recipes")}
                 styles={{ width: "290px", padding: "30px" }}
               />
             </div>
