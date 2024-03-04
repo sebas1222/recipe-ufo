@@ -3,6 +3,7 @@ import {
   IngredientData,
   RecipeAddFormTypes,
   RecipeStepTypes,
+  RecipeToDB,
 } from "../../interfaces/index.t";
 import TextInputList from "../TextInputList";
 import { useState } from "react";
@@ -10,17 +11,27 @@ import InputImage from "../InputImage";
 import Input from "../Input";
 import Button from "../Button";
 import { recipeFormToDB, uploadImageCloudinary } from "../../helpers";
-import "./index.scss";
-import AccountRecipeService from "../../api/recipes";
 import { useUserTokenState } from "../../store/userToken";
 import IngredientstInputList from "../IngredientstInputList";
 import IngredientInput from "../IngredientInput";
+import { useMutation, useQueryClient } from "react-query";
+import "./index.scss";
+import { toast } from "react-toastify";
+import RecipeService from "../../api/recipes";
 
 const RecipeForm = () => {
   const [form, setForm] = useState<RecipeAddFormTypes>(initialValuesRecipeForm);
+  const queryClient = useQueryClient();
   const userId = useUserTokenState((state) => state.userToken);
+  const { mutate: createRecipe } = useMutation({
+    mutationFn: (data: RecipeToDB) => RecipeService.createRecipe(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["recipes"]),
+        toast.success("Receta creada");
+    },
+  });
+
   const handleSubmitRecipe = async () => {
-    console.log(form);
     if (form.url) {
       const url = await uploadImageCloudinary(form.url);
       const dataToSend = recipeFormToDB({
@@ -29,15 +40,17 @@ const RecipeForm = () => {
         usuarioId: Number(userId),
       });
       console.log({ dataToSend });
-      await AccountRecipeService.createRecipe(dataToSend);
+      createRecipe(dataToSend);
     }
   };
+
   const handleChangeForm = (
     field: string,
     value: string | Blob | RecipeStepTypes[]
   ) => {
     setForm({ ...form, [field]: value });
   };
+
   const handleAddIngredient = (ingredientToAdd: IngredientData) => {
     if (
       !form.ingredientes.some(
@@ -87,7 +100,7 @@ const RecipeForm = () => {
       ),
     });
   };
-  console.log(form);
+
   return (
     <form>
       <div className="recipe--form--primary--info">
@@ -106,7 +119,7 @@ const RecipeForm = () => {
       <div className="recipe--form--secondary--info">
         <IngredientstInputList onSelect={handleAddIngredient} />
         <div className="ingredients--list--container">
-          {form.ingredientes.map((ingredient) => {
+          {form?.ingredientes.map((ingredient) => {
             return (
               <IngredientInput
                 onChangeMeasure={(value, id) =>

@@ -1,13 +1,13 @@
-import Api from ".";
+import Api, { BASE_URL } from ".";
 import { RecipeToDB } from "../interfaces/index.t";
 
-const BASE_URL = "https://localhost:7083/api/Recetas";
+const BASE_URL_RECIPES = `${BASE_URL}/api/Recetas`;
 
-export default class AccountRecipeService {
+export default class RecipeService {
   static async getRecipes() {
     try {
-      const rsp = await Api.get(`${BASE_URL}`);
-      const rspJson = rsp.json();
+      const rsp = await Api.get(`${BASE_URL_RECIPES}`);
+      const rspJson = await rsp.json();
       return rspJson;
     } catch (error) {
       console.log(error);
@@ -15,9 +15,9 @@ export default class AccountRecipeService {
   }
   static async createRecipe(data: RecipeToDB) {
     try {
-      const rsp = await Api.post(`${BASE_URL}`, data);
-      const rspJson = rsp.json();
-      return rspJson;
+      const rsp = await Api.post(`${BASE_URL_RECIPES}`, data);
+
+      return "creado";
     } catch (error) {
       console.log(error);
     }

@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../Button";
 import useScrollY from "../../hooks/useScrollY";
 import { useState } from "react";
@@ -36,14 +36,20 @@ const NavBar = () => {
             <h2>PLATO VOLADOR</h2>
           </div>
           <ul>
-            <li className={location.pathname === "/" ? "active" : ""}>
-              <Link to="/">Inicio</Link>
+            <li
+              className={location.pathname === "/" ? "active" : ""}
+              onClick={() => navigate("/")}
+            >
+              <span>Inicio</span>
             </li>
-            <li className={location.pathname === "/recipes" ? "active" : ""}>
-              <Link to="/recipes">Recetas</Link>
+            <li
+              className={location.pathname === "/recipes" ? "active" : ""}
+              onClick={() => navigate("/recipes")}
+            >
+              <span>Recetas</span>
             </li>
-            <li>
-              <Link to="/create">Crear</Link>
+            <li onClick={() => navigate("/create")}>
+              <span>Crear</span>
             </li>
           </ul>
           <div>

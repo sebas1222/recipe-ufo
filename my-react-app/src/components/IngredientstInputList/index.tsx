@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IngredientData } from "../../interfaces/index.t";
 import Input from "../Input";
 import IngredientsService from "../../api/ingredients";
 import "./index.scss";
+import { useQuery } from "react-query";
 
 interface IngredientstInputListProps {
   ingredientsData?: IngredientData[];
@@ -11,18 +12,12 @@ interface IngredientstInputListProps {
 
 const IngredientstInputList = ({ onSelect }: IngredientstInputListProps) => {
   const [search, setSearch] = useState<string>("");
-  const [ingredients, setIngredients] = useState<IngredientData[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const { isLoading, data: ingredients } = useQuery<IngredientData[]>({
+    queryKey: ["ingredients"],
+    queryFn: () => IngredientsService.getAllIngredients(),
+  });
 
-  useEffect(() => {
-    const fetchIngredients = async () => {
-      const data = await IngredientsService.getAllIngredients();
-      setIngredients(data);
-      setLoading(false);
-    };
-    fetchIngredients();
-  }, []);
-
+  console.log({ ingredients });
   const handleSelectIngredient = (ingredient: IngredientData) => {
     onSelect(ingredient);
     setSearch("");
@@ -33,7 +28,7 @@ const IngredientstInputList = ({ onSelect }: IngredientstInputListProps) => {
       .includes(search.toLocaleLowerCase())
   );
 
-  if (loading) return <p>Loading...</p>;
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <div className="ingredients--input--list--container">

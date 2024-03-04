@@ -1,50 +1,56 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
+import IngredientstInputList from "../../components/IngredientstInputList";
+import Input from "../../components/Input";
+import RecipeItem from "../../components/RecipeItem";
+import { IoMdCloseCircleOutline } from "react-icons/io";
+import { IngredientData } from "../../interfaces/index.t";
+import "./index.scss";
 const RecipesTemplate = () => {
-  const [ingredients, setIngredients] = useState<string[]>([]);
+  const [search, setSearch] = useState<string>("");
+  const [filtersIngredients, setFiltersIngredients] = useState<
+    IngredientData[]
+  >([]);
 
-  const options = [
-    { id: 1, name: "arroz" },
-    { id: 2, name: "papa" },
-  ];
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = e.target;
-    if (checked) {
-      setIngredients([...ingredients, value]);
-    } else {
-      setIngredients(ingredients.filter((ingredient) => ingredient !== value));
-    }
+  const handleSelecIngredient = (ingredient: IngredientData) => {
+    console.log(ingredient);
   };
 
-  //   const filteredProducts = products.filter((product) => {
-  //     // Verificar si todos los ingredientes del producto están incluidos en el estado ingredients
-  //     return product.ingredients.every((ingredient) =>
-  //       ingredients.includes(ingredient.name)
-  //     );
-  //   });
-
-  console.log({ ingredients });
+  const filterByIngredients = () => {};
 
   return (
-    <div>
-      <p>Lista de ingredientes</p>
-      {options &&
-        options.map((option) => {
-          return (
-            <div key={option.id}>
-              <input
-                onChange={handleChange}
-                checked={ingredients.includes(option.name)}
-                value={option.name}
-                type="checkbox"
-                id={option.name}
-                name={option.name}
+    <div className="recipes--template--main--container">
+      <div className="recipes--template--content--container content--container">
+        <div className="recipes--template--side--container">
+          <strong>Filtrar por recetas</strong>
+          <IngredientstInputList
+            onSelect={(value) => handleSelecIngredient(value)}
+          />
+          <div className="filter--ingredient--item">
+            <p>TOMATE</p>
+            <IoMdCloseCircleOutline />
+          </div>
+        </div>
+        <div className="recipes--template--recipes--list">
+          <div className="recipes--template--recipes--list--search">
+            <strong>Resultados:</strong>
+            <div className="recipe--search">
+              <strong>Buscar</strong>
+              <Input
+                type="text"
+                value={search}
+                onChange={(value) => setSearch(value)}
+                placeholder="¿Qué se te antoja?"
               />
-              <label htmlFor={option.name}>{option.name}</label>
             </div>
-          );
-        })}
+          </div>
+          <div className="recipes--template--recipes--list--items">
+            <RecipeItem />
+            <RecipeItem />
+            <RecipeItem />
+            <RecipeItem />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

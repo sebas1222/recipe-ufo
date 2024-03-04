@@ -1,0 +1,53 @@
+@use "../../theme" as *;
+.recipes--template--main--container {
+  .recipes--template--content--container {
+    display: grid;
+    grid-template-columns: 1.5fr 5fr;
+    gap: 20px;
+    .recipes--template--side--container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      strong {
+        font-size: 30px;
+      }
+      .filter--ingredient--item {
+        background-color: $primary--color;
+        padding: 8px 5px;
+        color: white;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        svg {
+          cursor: pointer;
+          font-size: 20px;
+        }
+      }
+    }
+    .recipes--template--recipes--list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .recipes--template--recipes--list--search {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .recipe--search {
+          display: flex;
+          align-items: center;
+
+          gap: 20px;
+          .input--main--container {
+            width: 250px;
+          }
+        }
+      }
+      .recipes--template--recipes--list--items {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+    }
+  }
+}

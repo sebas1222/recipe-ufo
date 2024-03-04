@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://platobackend.azurewebsites.net";
 
 export default class Api {
   static get(URL: string) {

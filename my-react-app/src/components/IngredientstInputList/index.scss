@@ -9,6 +9,8 @@
         width: 100%;
         position: absolute;
         min-height: 30px;
+        max-height: 100px;
+        overflow-y: scroll;
         border: 1px solid grey;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;

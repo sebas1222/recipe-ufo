@@ -1,13 +1,13 @@
-import Api from ".";
+import Api, { BASE_URL } from ".";
 import { LoginFormTypes, RegisterFormTypes } from "../interfaces/index.t";
 
-const BASE_URL = "https://localhost:7083/api/Usuarios";
+const BASE_URL_ACCOUNT = `${BASE_URL}/api/Usuarios`;
 
 export default class AccountUserService {
   static async getAccount(id: number) {
     try {
-      const rsp = await Api.get(`${BASE_URL}/${id}`);
-      const rspJson = rsp.json();
+      const rsp = await Api.get(`${BASE_URL_ACCOUNT}/${id}`);
+      const rspJson = await rsp.json();
       return rspJson;
     } catch (error) {
       console.log(error);
@@ -15,8 +15,8 @@ export default class AccountUserService {
   }
   static async loginAccount(data: LoginFormTypes) {
     try {
-      const rsp = await Api.post(`${BASE_URL}/Login`, data);
-      const rspJson = rsp.json();
+      const rsp = await Api.post(`${BASE_URL_ACCOUNT}/Login`, data);
+      const rspJson = await rsp.json();
       return rspJson;
     } catch (error) {
       console.log(error);
@@ -24,8 +24,8 @@ export default class AccountUserService {
   }
   static async registerAccount(data: RegisterFormTypes) {
     try {
-      const rsp = await Api.post(`${BASE_URL}`, data);
-      const rspJson = rsp.json();
+      const rsp = await Api.post(`${BASE_URL_ACCOUNT}`, data);
+      const rspJson = await rsp.json();
       return rspJson;
     } catch (error) {
       console.log(error);
