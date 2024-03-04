@@ -36,6 +36,7 @@ export const recipeFormToDB = (recipeValues: {
   const steps = recipeValues.instruccionesPreparacion.map(
     (step) => step.description
   );
+
   return {
     instruccionesPreparacion: steps.join("-"),
     nombreReceta: recipeValues.nombreReceta,
