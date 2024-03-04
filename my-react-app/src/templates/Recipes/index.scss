@@ -3,7 +3,7 @@
   .recipes--template--content--container {
     display: grid;
     grid-template-columns: 1.5fr 5fr;
-    gap: 20px;
+    gap: 30px;
     .recipes--template--side--container {
       display: flex;
       flex-direction: column;
@@ -47,6 +47,9 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 10px;
+      }
+      .alert--info--container {
+        align-self: center;
       }
     }
   }

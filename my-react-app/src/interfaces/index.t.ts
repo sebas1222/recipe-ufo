@@ -46,3 +46,22 @@ export interface IngredientInputTypes {
   cantidad: number;
   unidadMedida: string;
 }
+
+export interface RecipeData {
+  instruccionesPreparacion: string;
+  nombreReceta: string;
+  recetaId: number;
+  test: string;
+  test2: string;
+  usuario: {
+    apellido: string;
+    nombreUsuario: string;
+    usuarioId: number;
+  };
+  ingredientes: IngredientInputTypes[];
+}
+
+export interface FiltersRecipe {
+  query: string;
+  ingredients: IngredientData[];
+}

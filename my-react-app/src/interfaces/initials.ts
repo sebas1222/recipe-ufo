@@ -1,4 +1,5 @@
 import {
+  FiltersRecipe,
   LoginFormTypes,
   RecipeAddFormTypes,
   RegisterFormTypes,
@@ -22,4 +23,9 @@ export const initialValuesRecipeForm: RecipeAddFormTypes = {
   ingredientes: [],
   url: null,
   urlVideo: "",
+};
+
+export const initialValuesFiltersRecipe: FiltersRecipe = {
+  ingredients: [],
+  query: "",
 };

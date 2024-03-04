@@ -1,23 +1,24 @@
+import { RecipeData } from "../../interfaces/index.t";
 import Button from "../Button";
 import "./index.scss";
 
 interface RecipeItemProps {
-  title?: string;
-  img_url?: string;
-  author?: string;
+  dataRecipe: RecipeData;
 }
 
-const RecipeItem = ({
-  author = "Sebastian Céspedes",
-  title = "Receta",
-  img_url = "https://veggienoob.com/wp-content/uploads/2019/09/lomo-saltdo-vegano-500x500.jpg",
-}: RecipeItemProps) => {
+const RecipeItem = ({ dataRecipe }: RecipeItemProps) => {
+  const { nombreReceta, usuario, test } = dataRecipe;
   return (
     <div className="recipe--item--main--container">
-      <img src={img_url}></img>
+      <img
+        src={
+          test ||
+          "https://veggienoob.com/wp-content/uploads/2019/09/lomo-saltdo-vegano-500x500.jpg"
+        }
+      ></img>
       <div className="recipe--item--mask--container">
         <div className="recipe--item--layout--container">
-          <strong>{title}</strong>
+          <strong>{nombreReceta || "Receta"}</strong>
           <Button
             btnClass="btn-primary-inner"
             borderRadius={2}
@@ -26,7 +27,10 @@ const RecipeItem = ({
         </div>
         <p>
           <b>Por: </b>
-          <span>{author}</span>
+          <span>
+            {`${usuario.nombreUsuario} ${usuario.apellido}` ||
+              "Sebastian Céspedes"}
+          </span>
         </p>
       </div>
     </div>

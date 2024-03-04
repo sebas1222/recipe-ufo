@@ -6,6 +6,7 @@ import "./index.scss";
 import Modal from "../Modal";
 import AuthModal from "../AuthModal";
 import { useUserTokenState } from "../../store/userToken";
+import { toast } from "react-toastify";
 
 const NavBar = () => {
   const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
@@ -19,6 +20,7 @@ const NavBar = () => {
       setShowAuthModal(true);
     } else {
       setToken("");
+      toast.success("Cerro sesión exitosamente");
     }
   };
 

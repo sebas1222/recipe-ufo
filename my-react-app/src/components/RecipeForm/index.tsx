@@ -28,6 +28,7 @@ const RecipeForm = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(["recipes"]),
         toast.success("Receta creada");
+      setForm(initialValuesRecipeForm);
     },
   });
 

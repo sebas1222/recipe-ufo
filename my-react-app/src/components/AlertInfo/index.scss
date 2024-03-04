@@ -1,0 +1,15 @@
+.alert--info--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  strong {
+    font-size: 30px;
+    text-align: center;
+  }
+  .alert--info--icon {
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+  }
+}

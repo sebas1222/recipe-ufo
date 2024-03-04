@@ -1,5 +1,8 @@
 import {
+  FiltersRecipe,
+  IngredientData,
   IngredientInputTypes,
+  RecipeData,
   RecipeStepTypes,
   RecipeToDB,
 } from "../interfaces/index.t";
@@ -51,4 +54,69 @@ export const recipeFormToDB = (recipeValues: {
     usuarioId: recipeValues.usuarioId,
     ingredientes: ingredients,
   };
+};
+
+export const filterByIngredients = (
+  recipes: RecipeData[],
+  filtersIngredients: IngredientData[]
+): RecipeData[] => {
+  if (filtersIngredients?.length > 0) {
+    const filteredRecipes = recipes.filter((recipe) =>
+      recipe.ingredientes.some((ingredient) =>
+        filtersIngredients.some(
+          (ingredientF) =>
+            ingredientF.ingredienteId === ingredient.ingredienteId
+        )
+      )
+    );
+    return filteredRecipes;
+  } else {
+    return recipes;
+  }
+};
+
+function intersectArrays<T>(...arrays: T[][]): T[] {
+  if (arrays.length === 0) return [];
+
+  // Tomar el primer array como referencia
+  const referenceArray = arrays[0];
+
+  // Filtrar los elementos que están presentes en todos los arrays
+  const commonItems = referenceArray.filter((item) =>
+    arrays.every((array) => array.includes(item))
+  );
+
+  return commonItems;
+}
+
+export const filterBySearch = (
+  search: string,
+  recipes: RecipeData[]
+): RecipeData[] => {
+  if (search.length > 0) {
+    const filteredRecipes = recipes.filter((recipe) =>
+      recipe.nombreReceta
+        .toLocaleLowerCase()
+        .includes(search.toLocaleLowerCase())
+    );
+    return filteredRecipes;
+  } else {
+    return recipes;
+  }
+};
+
+export const filteredProducts = (
+  recipes: RecipeData[],
+  filters: FiltersRecipe
+): RecipeData[] => {
+  const productsByIngredients = filterByIngredients(
+    recipes,
+    filters.ingredients
+  );
+  const productsBySearch = filterBySearch(filters.query, recipes);
+  const commonRecipes = intersectArrays(
+    productsByIngredients,
+    productsBySearch
+  );
+  return commonRecipes;
 };
