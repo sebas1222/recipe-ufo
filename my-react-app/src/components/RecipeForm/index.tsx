@@ -10,7 +10,11 @@ import { useState } from "react";
 import InputImage from "../InputImage";
 import Input from "../Input";
 import Button from "../Button";
-import { recipeFormToDB, uploadImageCloudinary } from "../../helpers";
+import {
+  emptyFields,
+  recipeFormToDB,
+  uploadImageCloudinary,
+} from "../../helpers";
 import { useUserTokenState } from "../../store/userToken";
 import IngredientstInputList from "../IngredientstInputList";
 import IngredientInput from "../IngredientInput";
@@ -33,17 +37,23 @@ const RecipeForm = () => {
   });
 
   const handleSubmitRecipe = async () => {
-    if (form.url) {
-      const url = await uploadImageCloudinary(form.url);
-      const dataToSend = recipeFormToDB({
-        ...form,
-        url,
-        usuarioId: Number(userId),
-      });
-      console.log({ dataToSend });
-      createRecipe(dataToSend);
+    if (!emptyFields(form)) {
+      if (form.url) {
+        const url = await uploadImageCloudinary(form.url);
+        const dataToSend = recipeFormToDB({
+          ...form,
+          url,
+          usuarioId: Number(userId),
+        });
+        console.log({ dataToSend });
+        createRecipe(dataToSend);
+      }
+    } else {
+      toast.info("Completar todos los campos");
     }
   };
+
+  console.log(emptyFields(form));
 
   const handleChangeForm = (
     field: string,

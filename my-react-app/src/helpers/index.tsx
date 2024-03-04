@@ -2,6 +2,7 @@ import {
   FiltersRecipe,
   IngredientData,
   IngredientInputTypes,
+  RecipeAddFormTypes,
   RecipeData,
   RecipeStepTypes,
   RecipeToDB,
@@ -120,3 +121,15 @@ export const filteredProducts = (
   );
   return commonRecipes;
 };
+
+export function emptyFields(formulario: RecipeAddFormTypes): boolean {
+  for (const prop in formulario) {
+    if (formulario[prop] === null) {
+      return true;
+    }
+    if (formulario[prop].length === 0) {
+      return true;
+    }
+  }
+  return false;
+}

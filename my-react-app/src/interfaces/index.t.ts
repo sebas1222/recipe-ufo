@@ -10,6 +10,8 @@ export interface RegisterFormTypes {
   nombreUsuario: string;
 }
 export interface RecipeAddFormTypes {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
   nombreReceta: string;
   instruccionesPreparacion: RecipeStepTypes[];
   ingredientes: IngredientInputTypes[];

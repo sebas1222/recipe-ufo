@@ -7,7 +7,7 @@ export interface InputProps {
   value: string;
   onChange(value: string): void;
   icon?: React.ReactNode;
-  type: "text" | "password" | "email" | "date" | "datetime-local";
+  type: "text" | "number" | "password" | "email" | "date" | "datetime-local";
   regex?: RegExp;
 }
 

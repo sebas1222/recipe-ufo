@@ -20,14 +20,7 @@ const IngredientInput = ({
     onChangeUnity(value, ingredientInfo.ingredienteId);
   };
   const handleChangeMeasure = (value: string) => {
-    console.log(value);
-    if (value[value.length - 1] === ".") {
-      console.log(`${value}0`);
-      onChangeMeasure(parseFloat(`${value}0`), ingredientInfo.ingredienteId);
-    } else {
-      onChangeMeasure(parseFloat(value), ingredientInfo.ingredienteId);
-      console.log("aca xd");
-    }
+    onChangeMeasure(parseFloat(value), ingredientInfo.ingredienteId);
   };
   const handleDelete = () => {
     onDelete(ingredientInfo.ingredienteId);
@@ -44,10 +37,9 @@ const IngredientInput = ({
         regex={/^[a-zA-Z]*$/}
       />
       <Input
-        type="text"
+        type="number"
         value={String(ingredientInfo.cantidad)}
         onChange={handleChangeMeasure}
-        regex={/^(?=.*[0-9])\d{1,3}(?:\.\d{1,4})?$/}
         placeholder="Cantidad"
       />
       <div className="ingredient--delete--option" onClick={handleDelete}>
