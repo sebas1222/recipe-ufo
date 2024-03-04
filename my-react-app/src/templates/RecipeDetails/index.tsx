@@ -38,7 +38,7 @@ const RecipeDetails = ({ data }: RecipeDetailsProps) => {
             <ul className="recipe--details--ingredients--list">
               {data?.ingredientes.map((ingredient) => {
                 return (
-                  <li>
+                  <li key={ingredient.ingredienteId}>
                     <span>{ingredient.nombreIngrediente}</span>
                     <span>{ingredient.cantidad}</span>
                     <span>{ingredient.unidadMedida || "unidad"}</span>
@@ -53,7 +53,7 @@ const RecipeDetails = ({ data }: RecipeDetailsProps) => {
               {steps &&
                 steps.map((step, index) => {
                   return (
-                    <li>
+                    <li key={index}>
                       <b> {index + 1}- </b>
                       <span>{step}</span>
                     </li>
