@@ -42,17 +42,26 @@ const Footer = () => {
             </p>
             <ul className="footer--social--links--container">
               <li>
-                <a href="/">
+                <a
+                  href="https://www.facebook.com/elplatovolador1/"
+                  target="_blank"
+                >
                   <BsFacebook />
                 </a>
               </li>
               <li>
-                <a href="/">
+                <a
+                  href="https://www.facebook.com/elplatovolador1/"
+                  target="_blank"
+                >
                   <BsTwitter />
                 </a>
               </li>
               <li>
-                <a href="/">
+                <a
+                  href="https://www.facebook.com/elplatovolador1/"
+                  target="_blank"
+                >
                   <BsInstagram />
                 </a>
               </li>
