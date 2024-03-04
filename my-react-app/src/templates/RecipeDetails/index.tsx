@@ -40,7 +40,7 @@ const RecipeDetails = ({ data }: RecipeDetailsProps) => {
                 return (
                   <li>
                     <span>{ingredient.nombreIngrediente}</span>
-                    <span>{ingredient.cantidad} unidad(s)</span>
+                    <span>{ingredient.cantidad}</span>
                     <span>{ingredient.unidadMedida || "unidad"}</span>
                   </li>
                 );
