@@ -6,7 +6,9 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import "./index.scss";
 import Button from "../Button";
+import { useNavigate } from "react-router-dom";
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <div className="hero--main--container">
       <div className="hero--carrousel--container">
@@ -62,6 +64,7 @@ const Hero = () => {
           <Button
             text="Explorar recetas!"
             icon={<BiFoodMenu />}
+            onClick={() => navigate("/recipes")}
             borderRadius={10}
             styles={{ alignSelf: "center", padding: "15px 30px" }}
           />
