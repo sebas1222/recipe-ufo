@@ -17,7 +17,7 @@ const InputImage = ({ value, onChange }: InputImageProps) => {
     <div className="input--image--container">
       <input
         type="file"
-        accept="image/png, image/gif, image/jpeg"
+        accept="image/png, image/gif, image/jpeg, image/jpg"
         alt="Imagen"
         onChange={handleChangeImage}
       />
