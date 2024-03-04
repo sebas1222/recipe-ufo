@@ -36,7 +36,9 @@ const IngredientstInputList = ({
     onSelect(ingredient);
   };
   const filterData = ingredients.filter((ingredient) =>
-    ingredient.nombreIngrediente.includes(search)
+    ingredient.nombreIngrediente
+      .toLocaleLowerCase()
+      .includes(search.toLocaleLowerCase())
   );
 
   if (loading) return <p>Loading...</p>;
