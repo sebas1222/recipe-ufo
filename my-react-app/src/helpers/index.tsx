@@ -83,7 +83,7 @@ function intersectArrays<T>(...arrays: T[][]): T[] {
   const referenceArray = arrays[0];
 
   // Filtrar los elementos que están presentes en todos los arrays
-  const commonItems = referenceArray.filter((item) =>
+  const commonItems = referenceArray?.filter((item) =>
     arrays.every((array) => array.includes(item))
   );
 

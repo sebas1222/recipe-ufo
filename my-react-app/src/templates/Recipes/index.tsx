@@ -48,7 +48,7 @@ const RecipesTemplate = ({ data }: RecipeTemplateProps) => {
   };
   console.log({ filters });
 
-  const filteredRecipes = filteredProducts(data, filters);
+  const filteredRecipes = filteredProducts(data, filters) || [];
 
   const handleCleanFilters = () => {
     setFilters(initialValuesFiltersRecipe);
